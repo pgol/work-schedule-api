@@ -9,7 +9,10 @@ const usersController = require('../controllers/users-controller')({
 
 router
   .get('/users', usersController.getUsers)
-  .post('/users', usersController.createUser);
+  .get('/users/:id', usersController.getUser)
+  .post('/users', usersController.createUser)
+  .put('/users/:id', usersController.updateUser)
+  .delete('/users/:id', usersController.removeUser);
 
 
 module.exports = router;
