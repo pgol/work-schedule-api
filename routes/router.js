@@ -1,16 +1,14 @@
 const jwt = require('jsonwebtoken');
 const router = require('express').Router();
-const User = require('../models').User;
-const usersService = require('../services/users-service')({
-  userModel: User
-});
-const usersController = require('../controllers/users-controller')({
-  usersService
-});
-
+const knex = require('knex')(require('../knexfile'));
+const User = require('../models/user')(knex);
 const passport = require('passport');
 const config = require('../config');
 var auth = passport.authenticate('jwt', {session: false});
+
+const usersController = require('../controllers/users-controller')({
+  usersService: User
+});
 
 router
   .post('/login', (req, res) => {
@@ -25,7 +23,7 @@ router
       });
     }
   })
-  .get('/users',auth, usersController.getUsers)
+  .get('/users', usersController.getUsers)
   .get('/users/:id', usersController.getUser)
   .post('/users', usersController.createUser)
   .put('/users/:id', usersController.updateUser)

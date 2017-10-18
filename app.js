@@ -1,7 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-
 const passport = require('passport');
 const JwtStrategy = require('passport-jwt').Strategy;
 const ExtractJwt = require('passport-jwt').ExtractJwt;
@@ -9,11 +8,10 @@ const config = require('./config');
 
 var options = {
   jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-  secretOrKey: config.jwtSecret
+  secretOrKey: config.jwtSecret,
 };
 
 passport.use(new JwtStrategy(options, (jwt_payload, done) => {
-  console.log('jwtStragegy');
   var user = {
     id: jwt_payload.id,
   };
@@ -23,7 +21,6 @@ passport.use(new JwtStrategy(options, (jwt_payload, done) => {
 
 const app = express();
 const port = process.env.PORT || 3002;
-const models = require('./models');
 
 const router = require('./routes/router');
 
@@ -50,8 +47,6 @@ app.use((err, req, res, next) => {
   });
 });
 
-
-models.sequelize.sync()
-  .then(() => app.listen(port, () => console.log(`Server running on port ${port}`)));
+app.listen(port, () => console.log(`Server running on port ${port}`));
 
 module.exports = app;

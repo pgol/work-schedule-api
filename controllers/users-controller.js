@@ -1,37 +1,54 @@
 function initUsersController({usersService}) {
-  function getUsers(req, res) {
-    return usersService.getUsers()
-      .then(users => res.json(users))
-      .catch(console.error);
+  async function getUsers(req, res) {
+    try {
+      const users = await usersService.getUsers();
+      res.json(users);
+    } catch(e) {
+      console.error(e);
+    }
   }
 
-  function getUser(req, res) {
+  async function getUser(req, res) {
     console.log(req.params.id);
-    return usersService.getUser(req.params.id)
-      .then(user => res.json(user))
-      .catch(console.error);
+    try {
+      const user = await usersService.getUser(req.params.id);
+      res.json(user);
+    } catch(e) {
+      console.error(e);
+    }
   }
 
-  function createUser(req, res) {
-    return usersService.createUser({
-      username: req.body.username,
-      email: req.body.email
-    })
-      .then(user => res.json(user))
-      .catch(console.error);
+  async function createUser(req, res) {
+    try {
+      const user = await usersService.createUser({
+        username: req.body.username,
+        password: req.body.password
+      });
+      res.json(user);
+    } catch(e) {
+      console.log(e);
+    }
   }
 
-  function removeUser(req, res) {
-    return usersService.removeUser(req.params.id)
-      .then(removedUser => res.json(removedUser));
+  async function removeUser(req, res) {
+    try {
+      const removedUser = usersService.removeUser(req.params.id);
+      res.json(removedUser);
+    } catch(e) {
+      console.log(e);
+    }
   }
 
-  function updateUser(req, res) {
-    return usersService.updateUser(req.params.id, {
-      username: req.body.username,
-      email: req.body.email
-    })
-      .then(updatedUser => res.json(updatedUser));
+  async function updateUser(req, res) {
+    try {
+      const updatedUser = usersService.updateUser(req.params.id, {
+        username: req.body.username,
+        email: req.body.email
+      });
+      res.json(updatedUser);
+    } catch(e) {
+      console.log(e);
+    }
   }
 
   return {

@@ -1,7 +1,7 @@
 {
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon -r dotenv/config index.js",
+    "start": "node app.js",
+    "dev": "nodemon -r dotenv/config app.js",
     "test": "jest",
     "test-unit": "jest ./tests/unit",
     "test-unit-watch": "npm run test --- --watch",
@@ -9,23 +9,26 @@
   },
   "name": "work-schedule-api",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "app.js",
   "license": "MIT",
   "dependencies": {
     "body-parser": "^1.17.1",
     "cors": "^2.8.3",
     "dotenv": "^4.0.0",
+    "eslint": "^4.9.0",
     "express": "^4.15.2",
     "jest": "^20.0.1",
     "jsonwebtoken": "^8.1.0",
+    "knex": "^0.13.0",
     "passport": "^0.4.0",
     "passport-jwt": "^3.0.0",
-    "sequelize": "^3.30.4",
-    "sequelize-cli": "^2.7.0",
+    "pg": "^7.3.0",
     "sqlite3": "^3.1.8",
     "supertest": "^3.0.0"
   },
   "devDependencies": {
-    "nodemon": "^1.11.0"
+    "eslint-plugin-prettier": "^2.3.1",
+    "nodemon": "^1.11.0",
+    "prettier": "^1.7.4"
   }
 }
