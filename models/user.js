@@ -8,7 +8,7 @@ function makeUser(db) {
       salt,
       encrypted_password: hash,
       username
-    });
+    }).returning('*');
   }
 
   function getUsers() {
