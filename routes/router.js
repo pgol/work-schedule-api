@@ -34,6 +34,7 @@ router
   .put('/users/:id', usersController.updateUser)
   .delete('/users/:id', usersController.removeUser)
   .get('/events', eventsController.getEvents)
+  .get('/events/:id', eventsController.getEvent)
   .post('/events', eventsController.createEvent);
 
 
