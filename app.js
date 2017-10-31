@@ -23,6 +23,7 @@ const app = express();
 const port = process.env.PORT || 3002;
 
 const router = require('./routes/router');
+const graphRouter = require('./routes/graph');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -30,6 +31,7 @@ app.use(cors());
 
 
 app.use('/api/v1', router);
+app.use('/graphapi/v1', graphRouter)
 
 //404 handler
 app.use((req, res, next) => {
