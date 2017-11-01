@@ -1,51 +1,21 @@
-const get = require('lodash/fp/get');
 const {
   GraphQLSchema,
   GraphQLObjectType,
-  GraphQLString,
-  GraphQLInt,
-  GraphQLList
+  GraphQLString
 } = require('graphql');
-
-
-const eventType = new GraphQLObjectType({
-  name: 'Event',
-  fields: {
-    id: {
-      type: GraphQLInt,
-      resolve: get('id')
-    },
-    name: {
-      type: GraphQLString,
-      resolve: get('name')
-    }
-  }
-});
+const event = require('../models/event/event.query');
+const events = require('../models/event/events.query');
 
 const queryType = new GraphQLObjectType({
-  name: 'Root',
+  name: 'rootSchema',
+  description: 'all resources for schedules app',
   fields: {
     version: {
       type: GraphQLString,
       resolve: () => '1.0.0'
     },
-    events: {
-      type: new GraphQLList(eventType),
-      resolve(data, args, {events}) {
-        return events.getEvents();
-      }
-    },
-    event: {
-      type: eventType,
-      args: {
-        id: {
-          type: GraphQLInt
-        }
-      },
-      resolve(data, args, {events}) {
-        return events.getEvent(args.id)
-      }
-    }
+    events,
+    event
   }
 });
 

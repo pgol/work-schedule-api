@@ -1,4 +1,4 @@
-const saltHashPassword = require('../helpers/helpers').saltHashPassword;
+const saltHashPassword = require('../../helpers/helpers').saltHashPassword;
 
 function makeUser(db) {
   const TABLE_NAME = 'users';

@@ -31,7 +31,7 @@ app.use(cors());
 
 
 app.use('/api/v1', router);
-app.use('/graphapi/v1', graphRouter)
+app.use('/graphapi/v1', graphRouter);
 
 //404 handler
 app.use((req, res, next) => {
