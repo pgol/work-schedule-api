@@ -8,7 +8,7 @@ function makeEvent(db) {
     return db.select('*').from(TABLE_NAME);
   }
   function getEvent(id) {
-    return db.select('*').from(TABLE_NAME).where('id', id);
+    return db.first('*').from(TABLE_NAME).where('id', id);
   }
 
   function removeEvent(id) {

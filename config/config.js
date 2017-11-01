@@ -1,5 +1,6 @@
 const env = process.env;
 module.exports = {
+  env: env.ENV,
   db: {
     host: env.DB_HOST,
     user: env.DB_USER,
