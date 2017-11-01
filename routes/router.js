@@ -1,8 +1,8 @@
 const jwt = require('jsonwebtoken');
 const router = require('express').Router();
 const knex = require('../config/db').knex;
-const User = require('../models/user')(knex);
 const Events = require('../models/events')(knex);
+const User = require('../models/user')(knex);
 const passport = require('passport');
 const config = require('../config');
 var auth = passport.authenticate('jwt', {session: false});
