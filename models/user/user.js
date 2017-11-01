@@ -15,7 +15,7 @@ function makeUser(db) {
     return db.select('*').from(TABLE_NAME);
   }
   function getUser(id) {
-    return db.select('*').from(TABLE_NAME).where('id', id);
+    return db.first('*').from(TABLE_NAME).where('id', id);
   }
 
   function removeUser(id) {
