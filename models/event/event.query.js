@@ -1,6 +1,4 @@
-const {
-  GraphQLInt
-} = require('graphql');
+const {GraphQLInt} = require('graphql')
 const eventType = require('./event.model');
 
 module.exports = {

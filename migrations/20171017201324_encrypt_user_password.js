@@ -1,11 +1,10 @@
-
 const saltHashPassword = require('../helpers/helpers').saltHashPassword;
 
 exports.up = function(knex, Promise) {
-  function convertPassword (user) {
-    const {salt, hash} = saltHashPassword(user.password);
+  function convertPassword(user) {
+    const { salt, hash } = saltHashPassword(user.password);
     return knex('users')
-      .where({id: user.id})
+      .where({ id: user.id })
       .update({
         salt,
         encrypted_password: hash
@@ -27,5 +26,5 @@ exports.down = function(knex, Promise) {
     t.dropColumn('salt');
     t.dropColumn('encrypted_password');
     t.string('password').notNullable();
-  })
+  });
 };
