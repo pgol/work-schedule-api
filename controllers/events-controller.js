@@ -1,10 +1,9 @@
-
-function initEventsController({eventsService}) {
+function initEventsController({ eventsService }) {
   async function getEvents(req, res) {
     try {
       const events = await eventsService.getEvents();
       res.json(events);
-    } catch(e) {
+    } catch (e) {
       console.error(e);
     }
   }
@@ -14,7 +13,7 @@ function initEventsController({eventsService}) {
     try {
       const event = await eventsService.getEvent(req.params.id);
       res.json(event);
-    } catch(e) {
+    } catch (e) {
       console.error(e);
     }
   }
@@ -26,7 +25,7 @@ function initEventsController({eventsService}) {
         description: req.body.description
       });
       res.json(event);
-    } catch(e) {
+    } catch (e) {
       console.log(e);
     }
   }
@@ -35,7 +34,7 @@ function initEventsController({eventsService}) {
     try {
       const removedEvent = eventsService.removeEvent(req.params.id);
       res.json(removedEvent);
-    } catch(e) {
+    } catch (e) {
       console.log(e);
     }
   }
@@ -44,7 +43,7 @@ function initEventsController({eventsService}) {
     try {
       const updatedEvent = eventsService.updateEvent(req.params.id, req.body);
       res.json(updatedEvent);
-    } catch(e) {
+    } catch (e) {
       console.log(e);
     }
   }

@@ -1,4 +1,3 @@
-
 exports.up = function(knex, Promise) {
   return knex.schema.createTable('events', t => {
     t.increments('id').primary();
@@ -8,9 +7,9 @@ exports.up = function(knex, Promise) {
     t.datetime('start_date');
     t.datetime('end_date');
     t.timestamps(false, true);
-  })
+  });
 };
 
 exports.down = function(knex, Promise) {
-  return knex.schema.dropTableIfExists('events')
+  return knex.schema.dropTableIfExists('events');
 };
