@@ -1,9 +1,9 @@
-function initUsersController({usersService}) {
+function initUsersController({ usersService }) {
   async function getUsers(req, res) {
     try {
       const users = await usersService.getUsers();
       res.json(users);
-    } catch(e) {
+    } catch (e) {
       console.error(e);
     }
   }
@@ -13,7 +13,7 @@ function initUsersController({usersService}) {
     try {
       const user = await usersService.getUser(req.params.id);
       res.json(user);
-    } catch(e) {
+    } catch (e) {
       console.error(e);
     }
   }
@@ -25,7 +25,7 @@ function initUsersController({usersService}) {
         password: req.body.password
       });
       res.json(user);
-    } catch(e) {
+    } catch (e) {
       console.log(e);
     }
   }
@@ -34,7 +34,7 @@ function initUsersController({usersService}) {
     try {
       const removedUser = usersService.removeUser(req.params.id);
       res.json(removedUser);
-    } catch(e) {
+    } catch (e) {
       console.log(e);
     }
   }
@@ -46,7 +46,7 @@ function initUsersController({usersService}) {
         email: req.body.email
       });
       res.json(updatedUser);
-    } catch(e) {
+    } catch (e) {
       console.log(e);
     }
   }

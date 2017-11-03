@@ -1,8 +1,4 @@
-const {
-  GraphQLSchema,
-  GraphQLObjectType,
-  GraphQLString
-} = require('graphql');
+const { GraphQLSchema, GraphQLObjectType, GraphQLString } = require('graphql');
 const event = require('../models/event/event.query');
 const events = require('../models/event/events.query');
 

@@ -8,16 +8,18 @@ const config = require('./config');
 
 var options = {
   jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-  secretOrKey: config.jwtSecret,
+  secretOrKey: config.jwtSecret
 };
 
-passport.use(new JwtStrategy(options, (jwt_payload, done) => {
-  var user = {
-    id: jwt_payload.id,
-  };
+passport.use(
+  new JwtStrategy(options, (jwt_payload, done) => {
+    var user = {
+      id: jwt_payload.id
+    };
 
-  return done(null, user);
-}));
+    return done(null, user);
+  })
+);
 
 const app = express();
 const port = process.env.PORT || 3002;
@@ -28,7 +30,6 @@ const graphRouter = require('./routes/graph');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
-
 
 app.use('/api/v1', router);
 app.use('/graphapi/v1', graphRouter);

@@ -5,21 +5,21 @@ const Events = require('../models/event/event')(knex);
 const User = require('../models/user/user')(knex);
 const passport = require('passport');
 const config = require('../config');
-var auth = passport.authenticate('jwt', {session: false});
+var auth = passport.authenticate('jwt', { session: false });
 
 const eventsController = require('../controllers/events-controller')({
-  eventsService: Events,
+  eventsService: Events
 });
 
 const usersController = require('../controllers/users-controller')({
-  usersService: User,
+  usersService: User
 });
 
 router
   .post('/login', (req, res) => {
     if (req.body.id === 1) {
       res.send({
-        token: jwt.sign({id: req.body.id}, config.jwtSecret),
+        token: jwt.sign({ id: req.body.id }, config.jwtSecret),
         id: 1
       });
     } else {
@@ -36,6 +36,5 @@ router
   .get('/events', eventsController.getEvents)
   .get('/events/:id', eventsController.getEvent)
   .post('/events', eventsController.createEvent);
-
 
 module.exports = router;

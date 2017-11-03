@@ -6,7 +6,8 @@
     "test": "jest",
     "test-unit": "jest ./tests/unit",
     "test-unit-watch": "npm run test --- --watch",
-    "test-e2e": "jest ./tests/integration"
+    "test-e2e": "jest ./tests/integration",
+    "format": "eslint /**/*.js --fix"
   },
   "name": "work-schedule-api",
   "version": "1.0.0",
@@ -16,7 +17,7 @@
     "body-parser": "^1.17.1",
     "cors": "^2.8.3",
     "dotenv": "^4.0.0",
-    "eslint": "^4.9.0",
+    "eslint": "^4.10.0",
     "express": "^4.15.2",
     "express-graphql": "^0.6.11",
     "graphql": "^0.11.7",
@@ -30,8 +31,10 @@
     "supertest": "^3.0.0"
   },
   "devDependencies": {
+    "eslint-config-prettier": "^2.7.0",
     "eslint-plugin-prettier": "^2.3.1",
     "nodemon": "^1.11.0",
-    "prettier": "^1.7.4"
+    "prettier": "1.7.4",
+    "prettier-eslint-cli": "^4.4.0"
   }
 }
