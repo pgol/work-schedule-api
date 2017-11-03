@@ -32,7 +32,7 @@ function initUsersController({ usersService }) {
 
   async function removeUser(req, res) {
     try {
-      const removedUser = usersService.removeUser(req.params.id);
+      const removedUser = await usersService.removeUser(req.params.id);
       res.json(removedUser);
     } catch (e) {
       console.log(e);
@@ -41,7 +41,7 @@ function initUsersController({ usersService }) {
 
   async function updateUser(req, res) {
     try {
-      const updatedUser = usersService.updateUser(req.params.id, {
+      const updatedUser = await usersService.updateUser(req.params.id, {
         username: req.body.username,
         email: req.body.email
       });

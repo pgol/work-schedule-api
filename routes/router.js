@@ -35,6 +35,8 @@ router
   .delete('/users/:id', usersController.removeUser)
   .get('/events', eventsController.getEvents)
   .get('/events/:id', eventsController.getEvent)
+  .put('/events/:id', eventsController.updateEvent)
+  .delete('/events/:id', eventsController.removeEvent)
   .post('/events', eventsController.createEvent);
 
 module.exports = router;
