@@ -12,7 +12,9 @@ module.exports = new GraphQLObjectType({
       type: GraphQLInt,
       resolve: get('id')
     },
-    username: {type: GraphQLString, resolve: get('username')
+    username: {
+      type: GraphQLString,
+      resolve: get('username')
     },
     created_at: {
       type: GraphQLString,
