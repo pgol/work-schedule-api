@@ -9,7 +9,6 @@ function initUsersController({ usersService }) {
   }
 
   async function getUser(req, res) {
-    console.log(req.params.id);
     try {
       const user = await usersService.getUser(req.params.id);
       res.json(user);
