@@ -32,7 +32,7 @@ function initEventsController({ eventsService }) {
 
   async function removeEvent(req, res) {
     try {
-      const removedEvent = eventsService.removeEvent(req.params.id);
+      const removedEvent = await eventsService.removeEvent(req.params.id);
       res.json(removedEvent);
     } catch (e) {
       console.log(e);
@@ -41,7 +41,11 @@ function initEventsController({ eventsService }) {
 
   async function updateEvent(req, res) {
     try {
-      const updatedEvent = eventsService.updateEvent(req.params.id, req.body);
+      const updatedEvent = await eventsService.updateEvent(
+        req.params.id,
+        Object.assign({}, req.body)
+      );
+
       res.json(updatedEvent);
     } catch (e) {
       console.log(e);

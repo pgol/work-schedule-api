@@ -1,9 +1,6 @@
-const {
-  GraphQLObjectType,
-  GraphQLInt,
-  GraphQLString
-} = require('graphql');
+const { GraphQLObjectType, GraphQLInt, GraphQLString } = require('graphql');
 const get = require('lodash/fp/get');
+const user = require('../user/user.model');
 
 module.exports = new GraphQLObjectType({
   name: 'Event',
@@ -20,7 +17,17 @@ module.exports = new GraphQLObjectType({
       type: GraphQLString,
       resolve: get('description')
     },
-    //creator @TODO add user type later
+    creator: {
+      type: user,
+      args: {
+        id: {
+          type: GraphQLInt
+        }
+      },
+      resolve(data, { id }, { users }) {
+        return users.getUser(id);
+      }
+    },
     start_date: {
       type: GraphQLString,
       resolve: get('start_date')
