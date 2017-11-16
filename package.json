@@ -7,7 +7,8 @@
     "test-unit": "jest ./tests/unit",
     "test-unit-watch": "npm run test --- --watch",
     "test-e2e": "jest ./tests/integration",
-    "format": "eslint /**/*.js --fix"
+    "lint": "eslint ./**/*.js",
+    "format": "npm run lint -- --fix"
   },
   "name": "work-schedule-api",
   "version": "1.0.0",

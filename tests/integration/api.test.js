@@ -11,7 +11,7 @@ describe('API', () => {
         .expect(200)
         .then(responose => {
           expect(responose.body).toEqual([]);
-        })
+        });
     });
   });
 
@@ -28,7 +28,6 @@ describe('API', () => {
         .then(response => {
           console.log(response);
         });
-    })
-  })
-
+    });
+  });
 });

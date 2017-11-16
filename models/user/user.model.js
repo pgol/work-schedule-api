@@ -1,8 +1,4 @@
-const {
-  GraphQLObjectType,
-  GraphQLInt,
-  GraphQLString
-} = require('graphql');
+const { GraphQLObjectType, GraphQLInt, GraphQLString } = require('graphql');
 const get = require('lodash/fp/get');
 
 module.exports = new GraphQLObjectType({

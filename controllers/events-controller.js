@@ -9,7 +9,6 @@ function initEventsController({ eventsService }) {
   }
 
   async function getEvent(req, res) {
-    console.log(req.params.id);
     try {
       const event = await eventsService.getEvent(req.params.id);
       res.json(event);

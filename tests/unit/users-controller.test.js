@@ -3,7 +3,7 @@ describe('usersController', () => {
     getUsers: jest.fn(() => {
       return new Promise((resolve, reject) => {
         setTimeout(() => resolve('users'), 500);
-      })
+      });
     })
   };
 
@@ -20,10 +20,9 @@ describe('usersController', () => {
   describe('getUsers', () => {
     it('sends back json response', () => {
       expect.assertions(1);
-      return usersController.getUsers(reqMock, resMock)
-        .then(() => {
-          return expect(resMock.json).lastCalledWith('users');
-        });
+      return usersController.getUsers(reqMock, resMock).then(() => {
+        return expect(resMock.json).lastCalledWith('users');
+      });
     });
 
     it('calls method form service', () => {
