@@ -28,6 +28,8 @@ module.exports = new GraphQLObjectType({
         return users.getUser(id);
       }
     },
+    // TODO connect events and users here
+    // participats: {},
     start_date: {
       type: GraphQLString,
       resolve: get('start_date')
